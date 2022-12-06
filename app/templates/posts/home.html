@@ -1,0 +1,57 @@
+{% extends "layout/base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<!-- Side bar -->
+{% include "layout/sidebar.html" %}
+<!-- Content -->
+<div class="col-9 pt-3 ps-0">
+    <!-- Filters -->
+    <ul class="filters nav nav-fill">
+        <li class="nav-item">
+            <a class="nav-link {% if option=='following' %}active{% endif %}" href="{{url_for('.home', username=user)}}">Following</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if option=='mutuals' %}active{% endif %}" href="{{url_for('.home', username=user, option='mutuals')}}">Mutuals</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if option=='group' %}active{% endif %}" data-bs-toggle="dropdown" role="button">{{group}}</a>
+            <ul class="dropdown-menu w-100">
+                {% if groups %}
+                {% for g in groups %}
+                <li><a class="dropdown-item" href="{{url_for('.home', username=user, option='group', group=g.groupName)}}">{{g.groupName}}</a></li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </li>
+    </ul>
+    <!-- Posts -->
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 pt-4" data-masonry='{"percentPosition": true}'>
+        {% for p in posts %}
+        <div class="col">
+            <a href="{{url_for('.post_details', pid=p.pID)}}" class="link-dark text-decoration-none">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center bg-white px-3">
+                        <img class="profilePic img-fluid rounded-circle me-2" src="{{p.profilePath}}" alt="profile picture">
+                        <p class="m-0 fw-semibold">{{p.username}}</p>
+                    </div>
+                    <img src="/static/photos/{{p.filePath}}" class="rounded-bottom" alt="post picture">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block masonry_script %}
+<script type="text/javascript">
+    var $grid = $('#masonry').masonry({
+        itemSelector: '.col',
+        percentPosition: true
+    });
+    $grid.imagesLoaded().progress(function () {
+        $grid.masonry();
+    });
+</script>
+{% endblock %}

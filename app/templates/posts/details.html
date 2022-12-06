@@ -1,0 +1,73 @@
+{% extends "layout/base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<!-- Side bar -->
+{% include "layout/sidebar.html" %}
+<!-- Content -->
+<div class="col-9 pt-3 ps-0 pe-4">
+    <div class="card">
+        <div class="row row-cols-2 g-0">
+            <!-- Photo -->
+            <div class="col d-flex flex-column border-end">
+                <div class="card-header bg-transparent px-4 py-3 rounded-0">
+                    <a href="{{url_for('.get_user_profile', username=basic.username)}}" class="d-flex align-items-center text-decoration-none">
+                        <img class="profilePic img-fluid rounded-circle me-2" src="{{basic.profilePath}}" alt="profile picture">
+                        <p class="m-0 fw-semibold">{{basic.username}}</p>
+                    </a>
+                </div>
+                <img src="/static/photos/{{basic.filePath}}" class="img-fluid post-photo" alt="post photo">
+            </div>
+            <!-- Details -->
+            <div class="col d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                    <div class="comment row g-0 mb-3">
+                        <div class="col-1 d-flex justify-content-center">
+                            <img class="profilePic img-fluid rounded-circle" src="{{basic.profilePath}}" alt="profile picture">
+                        </div>
+                        <div class="col-11 ps-3">
+                            <span class="fw-semibold"> {{basic.username}} </span>
+                            <span>{{basic.caption}}</span><br>
+                            <small class="text-muted">{{basic.postingDate}}</small>
+                        </div>
+                    </div>
+                    <h5 class="mb-3">People</h5>
+                    <div class="tags overflow-scroll" style="height:13vh;">
+                        {% for t in tagged %}
+                        <a href="{{url_for('.get_user_profile', username=t.username)}}" class="d-flex align-items-center mb-3 text-decoration-none">
+                            <img class="profilePic img-fluid rounded-circle me-2" src="{{t.profilePath}}" alt="profile picture">
+                            <p class="m-0 fw-semibold">{{t.username}}</p>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <h5 class="mb-3">Comments</h5>
+                    <div class="comments overflow-scroll" style="height:29vh;">
+                        {% for r in reactions %}
+                        <div class="comment row g-0 mb-3">
+                            <div class="col-1 d-flex justify-content-center">
+                                <img class="profilePic img-fluid rounded-circle" src="{{r.profilePath}}" alt="profile picture">
+                            </div>
+                            <div class="col-11 ps-3">
+                                <span class="fw-semibold">{{r.username}} </span>
+                                <span>{{r.comment}}</span><br>
+                                <small class="text-muted">{{r.reactionTime}}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="comment-area border-top p-2">
+                    <form action="{{url_for('.update_post')}}" method='POST'>
+                        <div class="input-group">
+                            <button class="btn py-0 px-2"><i class="bi bi-chat-heart fs-4"></i></button>
+                            <input class="form-control border-0" type="text" name="comment" placeholder="Add a comment" />
+                            <button class="btn fw-semibold" type="submit" name="pid" value="{{basic.pID}}" style="color:#5c64ff">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

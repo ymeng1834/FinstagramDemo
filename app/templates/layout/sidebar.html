@@ -1,0 +1,50 @@
+<div class="sidebar col-3 d-flex flex-column ps-4 sticky-top" style="height: 95vh;">
+  <a href="{{url_for('posts.home', username=session['username'])}}" 
+  class="d-flex align-items-center mb-4 text-decoration-none">
+      <i class="logo bi bi-valentine2 fs-2 me-2"></i><span class="logo fs-1 fw-bolder">Finstagram</span>
+  </a>
+  <div class="d-flex flex-column pe-2 h-100">
+      <ul class="nav flex-column mb-4 flex-grow-1">
+          <li class="nav-item">
+              <a href="{{url_for('posts.home', username=session['username'])}}" class="nav-link active">
+                  <i class="bi bi-house-fill fs-4 me-4"></i>Home
+              </a>
+          </li>
+          <li>
+              <a href="#" class="nav-link">
+                  <i class="bi bi-search fs-4 me-4"></i>Search
+              </a>
+          </li>
+          <li>
+              <a href="#" class="nav-link">
+                  <i class="bi bi-bell fs-4 me-4"></i>Notifications
+              </a>
+          </li>
+          <li>
+              <a href="#" class="nav-link">
+                  <i class="bi bi-people fs-4 me-4"></i>People
+              </a>
+          </li>
+          <li>
+              <a href="#" class="nav-link">
+                  <i class="bi bi-archive fs-4 me-4"></i>Library
+              </a>
+          </li>
+          <li>
+              <a href="#" class="nav-link">
+                  <i class="bi bi-heart fs-4 me-4"></i>Interactions
+              </a>
+          </li>
+          <li>
+              <a class="btn upload">Upload</a>
+          </li>
+      </ul>
+      <div class="row g-0 ps-2 pb-3 align-items-center">
+          <a href="#" class="col-6 d-flex align-items-center link-dark text-decoration-none">
+              <img src="{{session['profilePath']}}" alt="profile" width="32" height="32" class="rounded-circle me-2">
+              <strong>{{session['username']}}</strong>
+          </a>
+          <a href="{{url_for('auth.logout')}}" class="col-6 link-dark text-end align-items-center fw-semibold"><small>Logout<i class="bi bi-arrow-up-right ms-1 me-3"></i></small></a>
+      </div>
+  </div>
+</div>

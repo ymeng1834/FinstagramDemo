@@ -1,0 +1,122 @@
+* {
+    color: #14171A;
+}
+.logo {
+    color: #7077ff;
+}
+button.logo {
+    font-size: 1rem;
+    border: 1px solid #7077ff;
+    border-radius: 0.375rem;
+    background-color: transparent;
+    padding: 0.375rem 0.75rem;
+}
+button.logo:hover, button.logo.active {
+    color: white;
+    border-color: #7077ff;
+    background-color: #7077ff;
+}
+.sidebar .nav-link {
+    color: #14171A;
+    font-size: 1.2rem;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.sidebar .nav-link.active {
+    font-weight: bold;
+}
+.sidebar .nav-link:hover {
+    font-weight: bold;
+}
+.filters .nav-link {
+    color: #14171A;
+    font-weight: 500;
+    border-radius: 5rem;
+}
+.filters .nav-link.active {
+    font-weight:bold;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.filters .nav-link:hover {
+    font-weight: bold;
+}
+.filters .dropdown-item {
+    text-align: center;
+}
+.filters .dropdown-item:hover{
+    background-color: transparent;
+    font-weight: bold;
+}
+.profilePic {
+    width: 2rem; 
+    height: 2rem; 
+    border:.05rem solid #dee2e6;
+}
+.post-photo {
+    border-bottom-left-radius: 0.375rem;
+}
+.comments::-webkit-scrollbar, .tags::-webkit-scrollbar {
+    display: none;
+  }
+.comment {
+    font-size: 14px;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+.upload {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #7077ff; 
+    border-radius: 10rem;
+    width: 75%;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+.upload:hover {
+    color: white;
+    background-color: #4751ff;
+}
+.follow-btn {
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 50rem;
+    background-color: white;
+    padding: 0.3rem 3rem;
+    transition: all .15s ease-in-out;
+    transition-property: color, background-color, border-color, box-shadow;
+    display: flex;
+    align-items: center;
+}
+.follow-btn:hover {
+    color:white;
+    background-color: #14171A;
+}
+.follow-btn.disabled {
+    padding: 0.15rem 1.5rem;
+    pointer-events: none;
+}
+.follow-btn.disabled span,
+.follow-btn.disabled i {
+    color: #6c757d;
+}
+.user-filters .nav-item {
+    border-bottom: 1px solid #dee2e6;
+}
+.user-filters .nav-item.active {
+    border-bottom: 1px solid #14171A;
+}
+.user-filters .nav-item.active .nav-link {
+    font-weight: bold;
+}
+.user-filters .nav-link {
+    color: #14171A;
+    font-weight: 500;
+}
+.user-filters .nav-link:hover {
+    font-weight: bold;
+}

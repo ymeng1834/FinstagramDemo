@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+{% block title %}Finstagram{% endblock %}
+{% block content %}
+<div class="col-6 mx-auto align-self-center">
+    <h1 class="text-center mb-3">Log in</h1>
+    <form action="/loginAuth" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required />
+        </div>
+        {% if error %}
+        <p class="text-danger">{{error}}</p>
+        {% endif %}
+        <button type="submit" class="btn btn-outline-primary mb-3">Submit</button>
+    </form>
+    <a href="/" class="link-primary">Go back</a>
+</div>
+{% endblock %}
